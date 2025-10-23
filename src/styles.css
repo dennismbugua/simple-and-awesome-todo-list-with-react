@@ -4,3 +4,85 @@
 .strike {
   text-decoration: line-through;
 }
+
+/* --- Enhanced styles for modern card UI --- */
+:root{
+  --bg:#0f172a;
+  --card:#0b1220;
+  --muted:#9aa4b2;
+  --accent:#7c3aed;
+  --accent-2:#06b6d4;
+  --glass: rgba(255,255,255,0.03);
+  --success:#10b981;
+}
+
+html,body,#root{height:100%;}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,#071024 0%, #07102a 60%);
+  color: #e6eef8;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px 16px;
+}
+
+.todo-app{width:100%;max-width:720px}
+.card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius:12px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.6), inset 0 1px 0 rgba(255,255,255,0.02);
+  overflow:hidden;
+}
+.card-header{padding:20px 24px}
+.card-header h2{margin:0;font-size:1.3rem;letter-spacing:-0.2px}
+.muted{color:var(--muted);font-size:0.9rem}
+.card-body{padding:16px 20px 20px}
+
+.input-row{display:flex;gap:12px;align-items:center}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.todo-input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);color:inherit;font-size:1rem;outline:none;transition:box-shadow .15s ease,border-color .15s ease}
+.todo-input:focus{box-shadow:0 6px 18px rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.28)}
+.btn{background:transparent;color:inherit;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn.small{padding:6px 10px;font-size:.85rem}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:0;color:white;padding:10px 14px}
+.btn.icon{padding:8px;border-radius:8px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+.controls{display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.filters{display:flex;gap:8px}
+.chip{background:transparent;border:1px solid rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;color:var(--muted);cursor:pointer}
+.chip.active{background:rgba(255,255,255,0.02);border-color:rgba(124,58,237,0.24);color:var(--accent)}
+
+.meta{display:flex;gap:12px;align-items:center}
+
+.todo-list{list-style:none;padding:12px 0;margin:12px 0 0 0;display:flex;flex-direction:column;gap:10px}
+.todo-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));border:1px solid rgba(255,255,255,0.02);transition:transform .12s ease,box-shadow .12s ease}
+.todo-item:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(2,6,23,0.45)}
+
+.todo-item.dragging{opacity:0.55;transform:scale(.98)}
+.todo-item.drag-over{box-shadow:0 8px 24px rgba(3,7,20,0.6);border-color:rgba(124,58,237,0.18);transform:translateY(-4px)}
+
+.checkbox{width:36px;height:36px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);display:inline-flex;align-items:center;justify-content:center;background:transparent;cursor:pointer;color:var(--muted)}
+.checkbox.checked{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:0}
+.todo-text{flex:1;word-break:break-word}
+.todo-text.completed{opacity:0.7;text-decoration:line-through;color:var(--muted)}
+.actions{display:flex;gap:8px}
+.empty{color:var(--muted);padding:12px;text-align:center}
+
+.card-footer{padding:12px 18px;border-top:1px solid rgba(255,255,255,0.02);font-size:0.85rem}
+
+/* small screens */
+@media (max-width:420px){
+  .card{border-radius:10px}
+  .todo-input{padding:10px}
+  .btn.primary{padding:8px 12px}
+}
+
+/* keep backward-compatible simple classes */
+.todo{cursor:pointer}
+.strike{text-decoration:line-through}
