@@ -160,5 +160,3 @@ If you'd like, I can:
 - Add tests and a simple CI workflow.
 
 Which of those would you prefer next?
-# simple-and-awesome-todo-list-with-react
-Created with CodeSandbox

@@ -35,7 +35,7 @@ const TodoList = () => {
     const trimmed = input.trim();
     if (!trimmed) return;
     const item = { id: Date.now() + Math.random(), todo: trimmed, isCompleted: false };
-    setTodoList((prev) => [...prev, item]);
+    setTodoList((prev) => [item, ...prev]);
     setInput("");
   };
 
@@ -68,7 +68,10 @@ const TodoList = () => {
     <section className="todo-app" aria-labelledby="todo-heading">
       <div className="card">
         <header className="card-header">
-          <h2 id="todo-heading">Simple & Awesome Todo</h2>
+          <div className="header-glow"></div>
+          <h2 id="todo-heading">
+            <span className="gradient-text">Simple & Awesome Todo</span>
+          </h2>
           <p className="muted">Fast, accessible, and delightful — built with care.</p>
         </header>
 
@@ -83,17 +86,25 @@ const TodoList = () => {
             <label htmlFor="new-todo" className="sr-only">
               Add todo
             </label>
-            <input
-              id="new-todo"
-              className="todo-input"
-              placeholder="What needs to be done?"
-              ref={inputRef}
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyDown={handleKeyDown}
-              aria-label="New todo"
-            />
+            <div className="input-wrapper">
+              <svg className="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+              </svg>
+              <input
+                id="new-todo"
+                className="todo-input"
+                placeholder="What needs to be done?"
+                ref={inputRef}
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                aria-label="New todo"
+              />
+            </div>
             <button type="button" className="btn primary" onClick={addItem} aria-label="Add todo">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"/>
+              </svg>
               Add
             </button>
           </div>
@@ -130,15 +141,33 @@ const TodoList = () => {
             </div>
 
             <div className="meta">
-              <span className="muted">{remaining} left</span>
+              <span className="count-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{marginRight: '6px'}}>
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+                  <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+                {remaining} {remaining === 1 ? 'task' : 'tasks'} remaining
+              </span>
               <button className="btn small" onClick={clearCompleted} disabled={!todoList.some((t) => t.isCompleted)}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style={{marginRight: '4px'}}>
+                  <path d="M3 6h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <path d="M19 6l-1 14H6L5 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
                 Clear completed
               </button>
             </div>
           </div>
 
           <ul className="todo-list" aria-live="polite">
-            {filtered.length === 0 && <li className="empty">No todos — add something productive ✨</li>}
+            {filtered.length === 0 && (
+              <li className="empty">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style={{marginBottom: '12px', opacity: 0.3}}>
+                  <path d="M9 11l3 3L22 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                <div>No todos yet — add something productive ✨</div>
+              </li>
+            )}
 
             {filtered.map(({ id, todo, isCompleted }) => (
               <li
@@ -181,7 +210,7 @@ const TodoList = () => {
                 >
                   {isCompleted ? (
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
-                      <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   ) : (
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -193,7 +222,7 @@ const TodoList = () => {
                 <span className={isCompleted ? "todo-text completed" : "todo-text"}>{todo}</span>
 
                 <div className="actions">
-                  <button type="button" className="btn icon" onClick={() => removeItem(id)} aria-label={`Delete ${todo}`}>
+                  <button type="button" className="btn icon delete-btn" onClick={() => removeItem(id)} aria-label={`Delete ${todo}`}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden>
                       <path d="M3 6h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
                       <path d="M8 6v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -206,7 +235,13 @@ const TodoList = () => {
             ))}
           </ul>
         </div>
-        <footer className="card-footer muted">Tip: Click an item or press Enter to toggle completion. Escape clears input.</footer>
+        <footer className="card-footer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{marginRight: '8px', opacity: 0.6}}>
+            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2"/>
+            <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+          <span className="muted">Tip: Press Enter to add • Escape to clear • Drag to reorder</span>
+        </footer>
       </div>
     </section>
   );
