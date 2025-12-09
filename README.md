@@ -8,6 +8,10 @@ A tiny productivity tool like a todo list can deliver outsized business value wh
 - Engagement and retention: small, useful features (like a well-designed todo list) increase user engagement and retention metrics. A Nielsen Norman Group study on microinteractions shows that smooth, responsive features improve perceived product quality and return visits.
 - Rapid prototyping and MVP: a small, single-purpose app is a great MVP that can be embedded into a larger product or used to validate UX ideas quickly — lowering cost of experimentation.
 
+### Live Demo Experience
+
+[![YT Video](https://github.com/dennismbugua/adjustable-columns/blob/main/public/img/data%20table%20-%20Dennis%20Njuguna.webp?raw=true])](https://youtu.be/YGjYz8-6p70 "Simple and Awesome Todo List")
+
 Concrete business impacts:
 - Increased daily active usage (DAU) when embedded into a dashboard or onboarding flow.
 - Improved conversion by offering quick wins to new users ("complete 1 task" feels achievable and encourages further use).
@@ -123,8 +127,6 @@ const inputRef = React.useRef(null);
 - Microinteractions & retention: Nielsen Norman Group and other UX research consistently find that polished interactions (responsive feedback, smooth animations) improve perceived quality and can increase return visits.
 - Small wins increase motivation: The "progress principle" (Teresa Amabile et al.) shows that small wins boost motivation. A todo list with quick wins can nudge users to return.
 
-If you want formal citations included in the README, I can add a references section with links to peer-reviewed research and UX resources.
-
 ---
 
 ## Next steps / extensions (technical and product)
@@ -151,12 +153,3 @@ This will run the app on the project's configured development server (usually ht
 ## TL;DR — elevator pitch
 
 A tiny, delightful todo component that solves a big problem: reduced cognitive load and faster decision-making. It's an excellent MVP or embeddable widget with accessibility, persistence, and modern UI — perfect for increasing engagement and retention when integrated into products.
-
----
-
-If you'd like, I can:
-- Add a references section with academic links and UX articles.
-- Convert the CSS to Tailwind utilities for consistency with other projects.
-- Add tests and a simple CI workflow.
-
-Which of those would you prefer next?
