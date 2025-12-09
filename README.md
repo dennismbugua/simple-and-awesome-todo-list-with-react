@@ -10,7 +10,7 @@ A tiny productivity tool like a todo list can deliver outsized business value wh
 
 ### Live Demo Experience
 
-[![YT Video](https://github.com/dennismbugua/adjustable-columns/blob/main/public/img/data%20table%20-%20Dennis%20Njuguna.webp?raw=true])](https://youtu.be/YGjYz8-6p70 "Simple and Awesome Todo List")
+[![YT Video](https://github.com/dennismbugua/simple-and-awesome-todo-list-with-react/blob/main/public/img/to-do%20list%20-%20Dennis%20Njuguna.webp?raw=true])](https://youtu.be/YGjYz8-6p70 "Simple and Awesome Todo List")
 
 Concrete business impacts:
 - Increased daily active usage (DAU) when embedded into a dashboard or onboarding flow.
